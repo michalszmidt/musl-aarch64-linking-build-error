@@ -1,6 +1,6 @@
 task:
   name: alpineOpenssl
-  only_if: $CIRRUS_BRANCH == 'master'
+  only_if: $CIRRUS_BRANCH == 'main'
     
   arm_container:
     image: alpine:latest
@@ -22,7 +22,7 @@ task:
 
 task:
   name: alpineNativeTLS
-  only_if: $CIRRUS_BRANCH == 'master'
+  only_if: $CIRRUS_BRANCH == 'main'
     
   arm_container:
     image: alpine:latest
@@ -44,7 +44,7 @@ task:
     
 task:
   name: alpineRustls
-  only_if: $CIRRUS_BRANCH == 'master'
+  only_if: $CIRRUS_BRANCH == 'main'
     
   arm_container:
     image: alpine:latest
