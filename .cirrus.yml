@@ -1,6 +1,6 @@
 task:
   name: alpineOpenssl
-  only_if: $CIRRUS_BRANCH == 'native'
+  only_if: $CIRRUS_BRANCH == 'fix'
     
   arm_container:
     image: alpine:latest
@@ -19,7 +19,7 @@ task:
 
 task:
   name: alpineNativeTLS
-  only_if: $CIRRUS_BRANCH == 'native'
+  only_if: $CIRRUS_BRANCH == 'fix'
     
   arm_container:
     image: alpine:latest
