@@ -1,6 +1,6 @@
 task:
   name: alpineOpenssl
-  only_if: $CIRRUS_BRANCH == 'main'
+  only_if: $CIRRUS_BRANCH == 'native'
     
   arm_container:
     image: alpine:latest
@@ -8,21 +8,18 @@ task:
     
   prepare_script:
     - apk -U upgrade
-    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static
-    - curl https://sh.rustup.rs -sSf | sh -s -- -y
-    - . $HOME/.cargo/env
+    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static rust cargo
     
   build_script:
     - whoami
     - cd openssl
-    - . $HOME/.cargo/env
     - ls -lah
     - rustc --version
     - cargo build --release --verbose
 
 task:
   name: alpineNativeTLS
-  only_if: $CIRRUS_BRANCH == 'main'
+  only_if: $CIRRUS_BRANCH == 'native'
     
   arm_container:
     image: alpine:latest
@@ -30,21 +27,18 @@ task:
     
   prepare_script:
     - apk -U upgrade
-    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static
-    - curl https://sh.rustup.rs -sSf | sh -s -- -y
-    - . $HOME/.cargo/env
+    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static rust cargo
     
   build_script:
     - whoami
     - cd native-tls
-    - . $HOME/.cargo/env
     - ls -lah
     - rustc --version
     - cargo build --release --verbose
     
 task:
   name: alpineRustls
-  only_if: $CIRRUS_BRANCH == 'main'
+  only_if: $CIRRUS_BRANCH == 'native'
     
   arm_container:
     image: alpine:latest
@@ -52,14 +46,11 @@ task:
     
   prepare_script:
     - apk -U upgrade
-    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static
-    - curl https://sh.rustup.rs -sSf | sh -s -- -y
-    - . $HOME/.cargo/env
+    - apk add curl make pkgconf bash build-base openssl openssl-dev openssl-libs-static rust cargo
     
   build_script:
     - whoami
     - cd rustls
-    - . $HOME/.cargo/env
     - ls -lah
     - rustc --version
     - cargo build --release --verbose
