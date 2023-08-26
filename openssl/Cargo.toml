@@ -5,6 +5,9 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[target.aarch64-unknown-linux-musl]
+rustflags = ["-C", "-mno-outline-atomics"]
+
 [dependencies]
 
 trust-dns-resolver = {version = "*", features = ["dns-over-openssl"]}  # Apache 2.0 / MIT
